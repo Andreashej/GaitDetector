@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 
 import { View, Text } from 'react-native';
-import { render } from 'react-dom';
 
 class Timer extends Component {
     state = {

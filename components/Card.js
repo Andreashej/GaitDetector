@@ -4,6 +4,9 @@ import { Text, View, AsyncStorage } from 'react-native';
 
 import { Accelerometer, Magnetometer, Gyroscope } from 'expo-sensors';
 
+import { activateKeepAwake, deactivateKeepAwake } from 'expo-keep-awake';
+
+
 export default class Card extends Component {
     state = {
         acc: {x: 0, y: 0, z: 0},
@@ -33,12 +36,11 @@ export default class Card extends Component {
             console.log(error);
         }
 
-        
         if (Accelerometer.isAvailableAsync()) {
+            activateKeepAwake();
 
             this.accData = Accelerometer.addListener(data => {
                 this.setState({acc: data});
-
                 const datapoint = {
                     timestamp: new Date().getTime(),
                     activity_id: this.props.activityId,
@@ -173,6 +175,7 @@ export default class Card extends Component {
         this.writeAllBuffers().then(
             ({buffer1Status, buffer2Status}) => {
                 console.log("Done writing all data to DB!");
+                deactivateKeepAwake();
                 // this.getData().then(
                 //     data => {
                 //         this.saveDatapoints(data).then(
@@ -187,7 +190,8 @@ export default class Card extends Component {
                 //         // console.log("Recorded " + data.datapoints.length + " datapoints.");
                 //     }
                 // );
-            }
+            },
+            () => deactivateKeepAwake()
         )
 
     }
