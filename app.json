@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "GaitDetector",
+    "slug": "GaitDetector",
+    "privacy": "public",
+    "sdkVersion": "36.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.andreashej.gaitdetector",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.andreashej.gaitdetector",
+      "versionCode": 1
+    }
+  }
+}
